@@ -1,133 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>ru.vlapin.courses.spring</groupId>
-	<artifactId>spring-boot-mvc</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-mvc</name>
-	<description>Demo project for Spring Boot</description>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.4.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>ru.vlapin.courses.spring</groupId>
+  <artifactId>spring-boot-mvc</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>spring-boot-mvc</name>
+  <description>Demo project for Spring Boot</description>
 
-	<properties>
-		<java.version>13</java.version>
+  <properties>
+    <java.version>13</java.version>
 
-		<!--region libs-->
-		<checker.version>3.1.0</checker.version>
-		<annotations.version>18.0.0</annotations.version>
-		<jcip-annotations.version>1.0</jcip-annotations.version>
-		<spotbugs.version>4.0.0-beta4</spotbugs.version>
-		<error_prone_annotations.version>2.3.4</error_prone_annotations.version>
+    <!--region libs-->
+    <checker.version>3.1.0</checker.version>
+    <annotations.version>18.0.0</annotations.version>
+    <jcip-annotations.version>1.0</jcip-annotations.version>
+    <spotbugs.version>4.0.0-beta4</spotbugs.version>
+    <error_prone_annotations.version>2.3.4</error_prone_annotations.version>
+
+		<springfox-swagger.version>3.0.0-SNAPSHOT</springfox-swagger.version>
+		<springfox-swagger-ui-rfc6570.version>1.0.0</springfox-swagger-ui-rfc6570.version>
+    <!--endregion-->
+
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>jcenter-snapshots</id>
+      <name>jcenter</name>
+      <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <!--region Common Annotations (CheckerFramework, JetBrains, SpotBugs, ErrorProne) -->
+      <dependency>
+        <groupId>org.checkerframework</groupId>
+        <artifactId>checker</artifactId>
+        <version>${checker.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jetbrains</groupId>
+        <artifactId>annotations</artifactId>
+        <version>${annotations.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.jcip</groupId>
+        <artifactId>jcip-annotations</artifactId>
+        <version>${jcip-annotations.version}</version>
+        <optional>true</optional>
+      </dependency>
+      <dependency>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-annotations</artifactId>
+        <version>${spotbugs.version}</version>
+        <optional>true</optional>
+      </dependency>
+      <dependency>
+        <groupId>com.google.errorprone</groupId>
+        <artifactId>error_prone_annotations</artifactId>
+        <version>${error_prone_annotations.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!--endregion-->
+
+      <!--region Swagger -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${springfox-swagger.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${springfox-swagger.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox.ui</groupId>
+        <artifactId>springfox-swagger-ui-rfc6570</artifactId>
+        <version>${springfox-swagger-ui-rfc6570.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-data-rest</artifactId>
+        <version>${springfox-swagger.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-bean-validators</artifactId>
+        <version>${springfox-swagger.version}</version>
+      </dependency>
+      <!--endregion-->
+
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!--region Common Annotations (CheckerFramework, JetBrains, SpotBugs, ErrorProne) -->
+    <dependency>
+      <groupId>org.checkerframework</groupId>
+      <artifactId>checker</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.jcip</groupId>
+      <artifactId>jcip-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.errorprone</groupId>
+      <artifactId>error_prone_annotations</artifactId>
+    </dependency>
+    <!--endregion-->
+
+		<!--region Swagger -->
+		<dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>io.springfox.ui</groupId>
+		  <artifactId>springfox-swagger-ui-rfc6570</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-data-rest</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-bean-validators</artifactId>
+		</dependency>
 		<!--endregion-->
 
-	</properties>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
 
-	<dependencyManagement>
-	  <dependencies>
+  <build>
 
-	    <!--region Common Annotations (CheckerFramework, JetBrains, SpotBugs, ErrorProne) -->
-	    <dependency>
-	      <groupId>org.checkerframework</groupId>
-	      <artifactId>checker</artifactId>
-	      <version>${checker.version}</version>
-	      <scope>provided</scope>
-	    </dependency>
-	    <dependency>
-	      <groupId>org.jetbrains</groupId>
-	      <artifactId>annotations</artifactId>
-	      <version>${annotations.version}</version>
-	      <scope>provided</scope>
-	    </dependency>
-	    <dependency>
-	      <groupId>net.jcip</groupId>
-	      <artifactId>jcip-annotations</artifactId>
-	      <version>${jcip-annotations.version}</version>
-	      <optional>true</optional>
-	    </dependency>
-	    <dependency>
-	      <groupId>com.github.spotbugs</groupId>
-	      <artifactId>spotbugs-annotations</artifactId>
-	      <version>${spotbugs.version}</version>
-	      <optional>true</optional>
-	    </dependency>
-	    <dependency>
-	      <groupId>com.google.errorprone</groupId>
-	      <artifactId>error_prone_annotations</artifactId>
-	      <version>${error_prone_annotations.version}</version>
-	      <scope>provided</scope>
-	    </dependency>
-	    <!--endregion-->
+    <defaultGoal>spring-boot:run</defaultGoal>
 
-	  </dependencies>
-	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!--region Common Annotations (CheckerFramework, JetBrains, SpotBugs, ErrorProne) -->
-		<dependency>
-		  <groupId>org.checkerframework</groupId>
-		  <artifactId>checker</artifactId>
-		</dependency>
-		<dependency>
-		  <groupId>org.jetbrains</groupId>
-		  <artifactId>annotations</artifactId>
-		</dependency>
-		<dependency>
-		  <groupId>net.jcip</groupId>
-		  <artifactId>jcip-annotations</artifactId>
-		</dependency>
-		<dependency>
-		  <groupId>com.github.spotbugs</groupId>
-		  <artifactId>spotbugs-annotations</artifactId>
-		</dependency>
-		<dependency>
-		  <groupId>com.google.errorprone</groupId>
-		  <artifactId>error_prone_annotations</artifactId>
-		</dependency>
-		<!--endregion-->
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
-
-	<build>
-
-		<defaultGoal>spring-boot:run</defaultGoal>
-
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
