@@ -1,6 +1,5 @@
 package ru.vlapin.courses.spring.springbootmvc.controllers;
 
-import lombok.SneakyThrows;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,8 @@ public class HelloController {
       @NotNull @RequestParam(defaultValue = "World", required = false) String name,
       @NotNull Model model) {
 
-    model.addAttribute("name", String.format("Hello, %s!", name));
+    model.addAttribute("name", name);
 
     return "hello";
   }
-
-
 }

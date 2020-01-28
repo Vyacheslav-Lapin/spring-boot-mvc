@@ -9,7 +9,7 @@
 <body>
 
     <!--/*@thymesVar id="name" type="java.lang.String"*/-->
-    <h1 th:text="${name}">Hello, friend!</h1>
+    <h1 th:text="'Hello, ' + ${name} + '!'">Hello, friend!</h1>
 
 </body>
 </html>
